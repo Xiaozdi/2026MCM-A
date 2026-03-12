@@ -76,3 +76,43 @@ P_total = P_base + P_screen + P_cpu + P_network + P_gps + P_background
 ### 3. CPU 功耗 `P_cpu`
 
 CPU 功耗由静态功耗与动态功耗构成。论文将其与核心频率、利用率、多核结构以及温度泄漏效应相关联，以体现高负载场景下处理器能耗的快速增长。
+
+### 4. 网络功耗 `P_network`
+
+网络模块用于描述 WiFi、4G、5G 等无线通信方式在不同活动强度下的功耗差异。论文指出，导航等场景中的额外耗电，并非全部来自 GPS，本质上还受到持续网络数据传输的显著影响。
+
+### 5. GPS 功耗 `P_gps`
+
+GPS 功耗在模型中通常以定位请求频率或使用强度建模。论文的分解结果显示，GPS 本身的直接功耗占比并不高，导航场景下更主要的耗电来源往往是屏幕常亮与网络连接。
+
+### 6. 后台任务功耗 `P_background`
+
+后台任务用于表征系统同步、应用维持、定时唤醒等非前台交互过程。论文分析表明，该模块在待机场景下相对重要，但在高强度前台活动中占比会明显下降。
+
+## 仓库文件说明
+
+当前仓库保留的脚本主要包括参数加载、功耗计算、SOC 仿真、场景模拟与结果可视化等部分，例如：
+
+README.md
+main_battery_drain.m
+load_battery_parameters.m
+moto_g60_parameters.m
+calculate_total_power.m
+calculate_power_consumption.m
+simulate_battery_drain.m
+simulate_battery_drain_new.m
+simulate_comprehensive_scenario.m
+single_factor_visualization.m
+visualize_single_factor_power.m
+plot_power_consumption_pie.m
+visualize_power_pie_charts.m
+calculate_temperature_effect.m
+validate_with_real_data.m
+...
+
+这些文件并不覆盖论文中的全部计算流程，但能够反映以下几个核心实现方向：
+
+- 参数初始化与设备设定
+- 总功耗计算与子模块分解
+- 不同使用场景下的 SOC 数值仿真
+- 饼图、曲线图等可视化结果生成
