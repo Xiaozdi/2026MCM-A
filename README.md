@@ -121,7 +121,6 @@ validate_with_real_data.m
 
 在 MATLAB 环境中进入仓库目录后，可从主程序开始运行：
 
-```matlab
 main_battery_drain
 
 若需要自定义设备参数或场景输入，可优先检查以下文件：
